@@ -1,5 +1,5 @@
 <template>
-  <div ref="home" class="fixed w-full h-full overflow-hidden">
+  <div class="flex flex-col justify-center items-center fixed w-full h-full overflow-hidden">
     <div class="flex fixed h-full bg-black bg-opacity-50 text-white shadow transition-all duration-500" :style="{ left: showMenu ? '0' : '-16rem' }">
       <div class="py-6 pl-6 w-64 h-full">
         <div class="pb-6 font-bold uppercase tracking-widest">Settings</div>
@@ -64,6 +64,7 @@
         </button>
       </div>
     </div>
+    <canvas ref="canvas"></canvas>
   </div>
 </template>
 
@@ -122,9 +123,8 @@
         this.scene = new THREE.Scene()
         this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000)
 
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: this.$refs.canvas })
         this.renderer.setSize(window.innerWidth, window.innerHeight)
-        this.$refs.home.appendChild(this.renderer.domElement)
 
         this.geometry = new THREE.IcosahedronGeometry(this.config.size, 0)
 
@@ -171,7 +171,7 @@
       this.start()
       this.animate()
 
-      window.addEventListener('resize', function () {
+      window.addEventListener('resize', () => {
         this.camera.updateProjectionMatrix()
         this.renderer.setSize(window.innerWidth, window.innerHeight)
       })
