@@ -5,7 +5,7 @@
         <div class="pb-6 font-bold uppercase tracking-widest">Settings</div>
         <div class="flex justify-between items-center py-2">
           <span class="text-xs uppercase tracking-wider">Kaleidoscope</span>
-          <button class="flex flex-col justify-center relative w-12 h-6 rounded-full bg-white focus:outline-none" @click="() => { config.kaleidoscope = ! config.kaleidoscope; start(); }">
+          <button class="flex flex-col justify-center relative w-12 h-6 rounded-full bg-white focus:outline-none" @click="() => { config.kaleidoscope = ! config.kaleidoscope; }">
             <div class="absolute w-6 h-6 rounded-full border-2 border-white bg-gray-400 transition-all duration-500" :class="{ 'bg-gray-600': config.kaleidoscope }" :style="{ left: config.kaleidoscope ? '1.5rem' : '0' }"></div>
           </button>
         </div>
@@ -116,10 +116,6 @@
         }
       },
       start () {
-        if (this.renderer) {
-          this.$refs.home.removeChild(this.renderer.domElement)
-        }
-
         this.scene = new THREE.Scene()
         this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000)
 
