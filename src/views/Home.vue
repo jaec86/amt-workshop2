@@ -5,7 +5,7 @@
         <div class="pb-6 font-bold uppercase tracking-widest">Settings</div>
         <div class="flex justify-between items-center py-2">
           <span class="text-xs uppercase tracking-wider">Kaleidoscope</span>
-          <button class="flex flex-col justify-center relative w-12 h-6 rounded-full bg-white focus:outline-none" @click="() => { config.kaleidoscope = ! config.kaleidoscope; }">
+          <button class="flex flex-col justify-center relative w-12 h-6 rounded-full bg-white focus:outline-none" @click="() => { config.kaleidoscope = ! config.kaleidoscope; start(); }">
             <div class="absolute w-6 h-6 rounded-full border-2 border-white bg-gray-400 transition-all duration-500" :class="{ 'bg-gray-600': config.kaleidoscope }" :style="{ left: config.kaleidoscope ? '1.5rem' : '0' }"></div>
           </button>
         </div>
